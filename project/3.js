@@ -34,4 +34,4 @@ switch (mode){
         for(i=0;i<Number(loop3);i++){
              document.getElementsByTagName('iframe')[0].contentWindow.Entry.variableContainer.getListByName(listname).insertValue(1, Information5);
         }
-}
+};
