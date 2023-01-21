@@ -449,3 +449,4 @@ window.fetch = async (input, config) => {
     throw err;
   }
 };
+//graphql 정보
