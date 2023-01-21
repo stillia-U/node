@@ -109,4 +109,4 @@ for(let i=1; i<quiz.length; i++){
         answers=answers+`${i}. X `;
     }
 }
-alert(answers)
+alert(answers);
