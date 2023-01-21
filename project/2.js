@@ -15,4 +15,4 @@ fetch("https://playentry.org/graphql", {
         }
     }),
     "method": "POST"
-});
+})
