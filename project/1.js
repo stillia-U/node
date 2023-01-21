@@ -1,3 +1,6 @@
+// TODO imgFileCompress -> rest/picture 500뜸
+// TODO 위 사항 -> blob 시스템 변경
+
 (async function(){
     var getIdeal = function(){
         var next_data = document.getElementById("__NEXT_DATA__");
@@ -92,13 +95,27 @@
     };
     if(!location.href.includes("entrystory")){}
     var cont = prompt("메시지를 입력해주세요", "테스트");
+    if (!cont) {
+        alert("취소되었습니다.");
+        return;
+    }
     var wrt = document.getElementById("Write");
     if(wrt) {wrt.value = cont;}
     await wait(100);
-    try {
-        id = await load();
-    } catch {
-        return;
+    var useID = confirm("이미지 파일을 올릴까요? (이미지 아이디가 있다면 취소를 누르세요)");
+    var id = "";
+    if (useID) {
+        try {
+            id = await load();
+        } catch {
+            return;
+        }
+    } else {
+        id = prompt("가지고 계신 이미지 아이디를 입력해주세요", "620a144b6e708500aab68294");
+        if (!id) {
+            alert("취소되었습니다.");
+            return;
+        }
     }
     var idl = getIdeal();
     var csrf = idl.csrf, xtoken = idl.xtoken;
@@ -121,4 +138,8 @@
         });
         return await crt.json();
     })(cont, id);
+
+    if(confirm("업로드가 끝났습니다. 새로고침하실래요?")){
+        location.replace("https://playentry.org/community/entrystory/list");
+    }
 })();
